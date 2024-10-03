@@ -42,6 +42,12 @@ class MainViewController: UIViewController, MainViewProtocol {
         presenter?.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            // Reload notes every time the view appears
+            presenter?.refreshNotes()  // Ensure the presenter reloads the latest notes
+        }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         presenter?.viewDidAppear()
@@ -62,7 +68,7 @@ class MainViewController: UIViewController, MainViewProtocol {
     
     private func setupLabel() {
         view.addSubview(label)
-        label.text = "No notes yet"
+        label.text = "  "
         label.font = .systemFont(ofSize: 20)
         label.textColor = .systemGray
         label.translatesAutoresizingMaskIntoConstraints = false

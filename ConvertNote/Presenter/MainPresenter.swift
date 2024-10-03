@@ -14,6 +14,7 @@ protocol MainPresenterProtocol: AnyObject {
     
     func viewDidLoad()
     func viewDidAppear()
+    func refreshNotes()
     func didTapAddButton()
     func numberOfRows(isSearching: Bool) -> Int
     func configureCell(cell: NoteCell, index: Int, isSearching: Bool)
@@ -39,6 +40,11 @@ class MainPresenter: MainPresenterProtocol {
     func viewDidLoad() {
         interactor?.fetchNotes()
     }
+    
+    func refreshNotes() {
+            interactor?.fetchNotes()
+            view?.showNotes()  // Update the view with the latest notes
+        }
 
     func viewDidAppear() {
         interactor?.removeEmptyNotes()
