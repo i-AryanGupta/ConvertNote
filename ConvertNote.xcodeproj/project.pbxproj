@@ -29,6 +29,7 @@
 		2B446EB72CAE7127009B6292 /* UILableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B446EB62CAE7127009B6292 /* UILableExtension.swift */; };
 		2B446EB92CAE7139009B6292 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B446EB82CAE7139009B6292 /* DateExtension.swift */; };
 		2B446EBD2CAE721F009B6292 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B446EBC2CAE721E009B6292 /* NoteCell.swift */; };
+		2B55F5AE2CAFBD7F00E4392C /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55F5AD2CAFBD7F00E4392C /* NoteCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		2B446EB62CAE7127009B6292 /* UILableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILableExtension.swift; sourceTree = "<group>"; };
 		2B446EB82CAE7139009B6292 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		2B446EBC2CAE721E009B6292 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		2B55F5AD2CAFBD7F00E4392C /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				2B446E972CAD2166009B6292 /* MainViewController.swift */,
 				2B446E992CAD2215009B6292 /* NoteViewController.swift */,
 				2B446EBC2CAE721E009B6292 /* NoteCell.swift */,
+				2B55F5AD2CAFBD7F00E4392C /* NoteCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				2B446E9E2CAD22AD009B6292 /* Note+CoreDataProperties.swift in Sources */,
 				2B446EB12CAE70C4009B6292 /* AddButton.swift in Sources */,
 				2B446EB92CAE7139009B6292 /* DateExtension.swift in Sources */,
+				2B55F5AE2CAFBD7F00E4392C /* NoteCollectionViewCell.swift in Sources */,
 				2B446EB32CAE70E3009B6292 /* CustomTextField.swift in Sources */,
 				2B446E7C2CAD19BD009B6292 /* SceneDelegate.swift in Sources */,
 				2B446E842CAD19BD009B6292 /* ConvertNote.xcdatamodeld in Sources */,

@@ -21,6 +21,8 @@ protocol MainPresenterProtocol: AnyObject {
     func didSelectNoteAt(index: Int, isSearching: Bool, noteCell: NoteCell?) // Updated to accept NoteCell
     func deleteNoteAt(index: Int)
     func searchNotes(text: String)
+    
+    func getNoteAt(index: Int, isSearching: Bool) -> Note?
 }
 
 class MainPresenter: MainPresenterProtocol {
@@ -84,6 +86,10 @@ class MainPresenter: MainPresenterProtocol {
         searchedNotes = interactor?.searchNotes(text: text) ?? []
         view?.showNotes()
     }
+    
+    func getNoteAt(index: Int, isSearching: Bool) -> Note? {
+            return isSearching ? searchedNotes[index] : interactor?.notes[index]
+        }
 }
 
 
