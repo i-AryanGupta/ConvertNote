@@ -11,7 +11,7 @@ class AddButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setImage(UIImage(systemName: "rectangle.stack.badge.plus"), for: .normal)
+        self.setImage(UIImage(systemName: "note.text.badge.plus"), for: .normal) // sf symbol - rectangle.stack.badge.plus
         self.contentVerticalAlignment = .fill
         self.contentHorizontalAlignment = .fill
     }
