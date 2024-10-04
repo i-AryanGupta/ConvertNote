@@ -14,14 +14,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-                let window = UIWindow(windowScene: windowScene)
+        let window = UIWindow(windowScene: windowScene)
+        self.window = window
+        
+        let splashViewController = SplashViewController()
+        window.rootViewController = splashViewController
+        window.makeKeyAndVisible()
+
+        // After a delay, transition to the MainViewController
+        splashViewController.transitionToMainView(window: window)
                 
                 // Instead of creating `MainViewController` directly, we now use the VIPER router to create the module
-                let mainViewController = MainRouter.createMainModule()// This creates the VIPER-based MainView module
-                
-                window.rootViewController = UINavigationController(rootViewController: mainViewController)
-                window.makeKeyAndVisible()
-                self.window = window
+//                let mainViewController = MainRouter.createMainModule()// This creates the VIPER-based MainView module
+//
+//                window.rootViewController = UINavigationController(rootViewController: mainViewController)
+//                window.makeKeyAndVisible()
+//                self.window = window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

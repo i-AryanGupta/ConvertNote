@@ -21,8 +21,11 @@ class MainViewController: UIViewController, MainViewProtocol {
     
     var searchController = UISearchController(searchResultsController: nil)
     var tableView: UITableView?
+    var collectionView: UICollectionView?
     let label = UILabel()
     let button = AddButton()
+    
+    var isGridView = false // Track the current view (grid or list)
     
     // Computed property to determine if the user is currently searching
         private var isSearching: Bool {
@@ -32,20 +35,48 @@ class MainViewController: UIViewController, MainViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-
         setupSearchController()
         setupNavigationController()
+        setupToggleButton()
         setupTableView()
         setupButton()
         setupLabel()
         
+        
         presenter?.viewDidLoad()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            // Reload notes every time the view appears
+            presenter?.refreshNotes()  // Ensure the presenter reloads the latest notes
+        }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         presenter?.viewDidAppear()
     }
+    
+    
+    
+    private func showTableView() {
+            collectionView?.removeFromSuperview()
+            collectionView = nil
+            setupTableView()
+            tableView?.isHidden = false
+            tableView?.reloadData()
+            view.bringSubviewToFront(button)
+        }
+    
+    private func showCollectionView() {
+            tableView?.removeFromSuperview()
+            tableView = nil
+            setupCollectionView()
+            collectionView?.isHidden = false
+            collectionView?.reloadData()
+            view.bringSubviewToFront(button)
+        }
+
     
     private func setupSearchController() {
         searchController.searchResultsUpdater = self
@@ -58,11 +89,16 @@ class MainViewController: UIViewController, MainViewProtocol {
         view.addSubview(button)
         button.setButtonConstraints(view: view)
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        view.bringSubviewToFront(button)
+    }
+    
+    @objc private func didTapButton() {
+        presenter?.didTapAddButton()
     }
     
     private func setupLabel() {
         view.addSubview(label)
-        label.text = "No notes yet"
+        label.text = "  "
         label.font = .systemFont(ofSize: 20)
         label.textColor = .systemGray
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -82,18 +118,40 @@ class MainViewController: UIViewController, MainViewProtocol {
         navigationItem.searchController = searchController
     }
     
+    private func setupToggleButton() {
+            let toggleButton = UIBarButtonItem(
+                title: "Grid View", // Initial title
+                style: .plain,
+                target: self,
+                action: #selector(didTapToggleButton)
+            )
+            navigationItem.rightBarButtonItem = toggleButton
+        }
+    
+    @objc private func didTapToggleButton() {
+            isGridView.toggle() // Toggle between list and grid view
+            navigationItem.rightBarButtonItem?.title = isGridView ? "List View" : "Grid View"
+            
+            if isGridView {
+                showCollectionView()
+            } else {
+                showTableView()
+            }
+        }
+    
     func showNotes() {
-        tableView?.reloadData()
+        if isGridView {
+            collectionView?.reloadData()
+        }
+        else {
+            tableView?.reloadData()
+        }
     }
     
     func showNoNotesLabel(_ show: Bool) {
         label.isHidden = !show
     }
-    
-    @objc private func didTapButton() {
-        presenter?.didTapAddButton()
-    }
-    
+
     func navigateToNoteDetail(noteId: String, noteCell: NoteCell?) {
         // Use the router to create and configure the NoteViewController
         let noteVC = NoteRouter.createNoteModule(noteId: noteId, noteCell: noteCell)
@@ -155,6 +213,52 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                     presenter?.deleteNoteAt(index: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .automatic)
                 }
+    }
+}
+
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    // Setup CollectionView
+        private func setupCollectionView() {
+            let layout = UICollectionViewFlowLayout()
+            layout.itemSize = CGSize(width: view.frame.size.width / 2 - 16, height: 150)
+            layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+
+            let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+            collectionView.register(NoteCollectionViewCell.self, forCellWithReuseIdentifier: NoteCollectionViewCell.id)
+            collectionView.delegate = self
+            collectionView.dataSource = self
+            view.addSubview(collectionView)
+            self.collectionView = collectionView
+            collectionView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                collectionView.widthAnchor.constraint(equalTo: view.widthAnchor),
+                collectionView.heightAnchor.constraint(equalTo: view.heightAnchor)
+            ])
+        }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return presenter?.numberOfRows(isSearching: isSearching) ?? 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoteCollectionViewCell.id, for: indexPath) as? NoteCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        if let note = presenter?.getNoteAt(index: indexPath.row, isSearching: isSearching) {
+                // Configure the cell with the note and pass the delete action
+                cell.configure(note: note, deleteAction: { [weak self] in
+                    // Handle delete action
+                    self?.presenter?.deleteNoteAt(index: indexPath.row)
+                    self?.collectionView?.reloadData()  // Reload the collection view after deletion
+                })
+            }
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter?.didSelectNoteAt(index: indexPath.row, isSearching: isSearching, noteCell: nil)
     }
 }
 

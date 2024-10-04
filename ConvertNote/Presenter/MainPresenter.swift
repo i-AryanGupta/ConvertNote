@@ -14,12 +14,15 @@ protocol MainPresenterProtocol: AnyObject {
     
     func viewDidLoad()
     func viewDidAppear()
+    func refreshNotes()
     func didTapAddButton()
     func numberOfRows(isSearching: Bool) -> Int
     func configureCell(cell: NoteCell, index: Int, isSearching: Bool)
     func didSelectNoteAt(index: Int, isSearching: Bool, noteCell: NoteCell?) // Updated to accept NoteCell
     func deleteNoteAt(index: Int)
     func searchNotes(text: String)
+    
+    func getNoteAt(index: Int, isSearching: Bool) -> Note?
 }
 
 class MainPresenter: MainPresenterProtocol {
@@ -39,6 +42,11 @@ class MainPresenter: MainPresenterProtocol {
     func viewDidLoad() {
         interactor?.fetchNotes()
     }
+    
+    func refreshNotes() {
+            interactor?.fetchNotes()
+            view?.showNotes()  // Update the view with the latest notes
+        }
 
     func viewDidAppear() {
         interactor?.removeEmptyNotes()
@@ -78,6 +86,10 @@ class MainPresenter: MainPresenterProtocol {
         searchedNotes = interactor?.searchNotes(text: text) ?? []
         view?.showNotes()
     }
+    
+    func getNoteAt(index: Int, isSearching: Bool) -> Note? {
+            return isSearching ? searchedNotes[index] : interactor?.notes[index]
+        }
 }
 
 
