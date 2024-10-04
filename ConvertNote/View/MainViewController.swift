@@ -245,9 +245,15 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoteCollectionViewCell.id, for: indexPath) as? NoteCollectionViewCell else {
             return UICollectionViewCell()
         }
+        
         if let note = presenter?.getNoteAt(index: indexPath.row, isSearching: isSearching) {
-                    cell.configure(note: note)
-                }
+                // Configure the cell with the note and pass the delete action
+                cell.configure(note: note, deleteAction: { [weak self] in
+                    // Handle delete action
+                    self?.presenter?.deleteNoteAt(index: indexPath.row)
+                    self?.collectionView?.reloadData()  // Reload the collection view after deletion
+                })
+            }
         return cell
     }
 
