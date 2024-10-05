@@ -33,6 +33,7 @@
 		2B55F5B02CAFF92400E4392C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55F5AF2CAFF92400E4392C /* SplashViewController.swift */; };
 		2BB1DA862CB16B2200D9897D /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB1DA852CB16B2200D9897D /* SideMenuView.swift */; };
 		2BB1DA892CB1BBA400D9897D /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB1DA882CB1BBA400D9897D /* GuideViewController.swift */; };
+		2BB1DA8B2CB1BFEE00D9897D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB1DA8A2CB1BFEE00D9897D /* AboutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		2B55F5AF2CAFF92400E4392C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		2BB1DA852CB16B2200D9897D /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		2BB1DA882CB1BBA400D9897D /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
+		2BB1DA8A2CB1BFEE00D9897D /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				2BB1DA882CB1BBA400D9897D /* GuideViewController.swift */,
+				2BB1DA8A2CB1BFEE00D9897D /* AboutViewController.swift */,
 			);
 			path = Extra;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				2B446EAA2CAE6321009B6292 /* MainPresenter.swift in Sources */,
 				2B446E9A2CAD2215009B6292 /* NoteViewController.swift in Sources */,
 				2BB1DA892CB1BBA400D9897D /* GuideViewController.swift in Sources */,
+				2BB1DA8B2CB1BFEE00D9897D /* AboutViewController.swift in Sources */,
 				2B446EA02CAE5C5B009B6292 /* CoreDataManager.swift in Sources */,
 				2B446EA22CAE5D0F009B6292 /* NotePresenter.swift in Sources */,
 				2B446E982CAD2166009B6292 /* MainViewController.swift in Sources */,
