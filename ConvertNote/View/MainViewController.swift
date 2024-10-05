@@ -200,14 +200,20 @@ class MainViewController: UIViewController, MainViewProtocol{
 
         // Guide Action
         @objc private func showGuide() {
-            print("Guide Tapped")
-            toggleMenu()  // Close menu after selection
+            
+            let guideVC = GuideViewController()
+            navigationController?.pushViewController(guideVC, animated: true)
+            print("About Tapped")
+            toggleMenu()
+            
         }
 
         // About Action
         @objc private func showAbout() {
+            let aboutVC = AboutViewController()
+            navigationController?.pushViewController(aboutVC, animated: true)
             print("About Tapped")
-            toggleMenu()  // Close menu after selection
+            toggleMenu()
         }
 
         // Log Out Action
