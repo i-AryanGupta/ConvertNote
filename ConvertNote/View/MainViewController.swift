@@ -16,7 +16,7 @@ protocol MainViewProtocol: AnyObject{
 
 import UIKit
 
-class MainViewController: UIViewController, MainViewProtocol {
+class MainViewController: UIViewController, MainViewProtocol{
     var presenter: MainPresenterProtocol?
     
     var searchController = UISearchController(searchResultsController: nil)
@@ -26,6 +26,8 @@ class MainViewController: UIViewController, MainViewProtocol {
     let button = AddButton()
     
     var isGridView = false // Track the current view (grid or list)
+    var isMenuOpen = false  // Track whether the side menu is open or not
+    var sideMenuView: SideMenuView!
     
     // Computed property to determine if the user is currently searching
         private var isSearching: Bool {
@@ -38,6 +40,7 @@ class MainViewController: UIViewController, MainViewProtocol {
         setupSearchController()
         setupNavigationController()
         setupToggleButton()
+        setupSideMenu()
         setupTableView()
         setupButton()
         setupLabel()
@@ -114,6 +117,10 @@ class MainViewController: UIViewController, MainViewProtocol {
         title = "Notes"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .systemBackground
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3"),
+                                                                   style: .plain,
+                                                                   target: self,
+                                                                   action: #selector(toggleMenu))
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
     }
@@ -139,6 +146,22 @@ class MainViewController: UIViewController, MainViewProtocol {
             }
         }
     
+    private func setupSideMenu() {
+        guard let window = UIApplication.shared.windows.first else { return }
+
+        // Side Menu Initialization (off-screen)
+        sideMenuView = SideMenuView(frame: CGRect(x: -250, y: 0, width: 250, height: window.frame.height))
+        
+        // Add side menu to the window (instead of the main view)
+        window.addSubview(sideMenuView)
+        
+        // Configure button actions for side menu buttons
+        sideMenuView.configureButtonActions(target: self, profileSelector: #selector(showProfileInfo), guideSelector: #selector(showGuide), aboutSelector: #selector(showAbout), logoutSelector: #selector(logout))
+        
+        setupTapGestureRecognizer()
+    }
+
+    
     func showNotes() {
         if isGridView {
             collectionView?.reloadData()
@@ -151,6 +174,48 @@ class MainViewController: UIViewController, MainViewProtocol {
     func showNoNotesLabel(_ show: Bool) {
         label.isHidden = !show
     }
+    
+    // Toggle the side menu visibility
+    @objc private func toggleMenu() {
+        isMenuOpen = !isMenuOpen
+        let menuXPosition = isMenuOpen ? 0 : -250
+        
+        // Make sure the side menu is above everything, including the navigation bar
+        view.bringSubviewToFront(sideMenuView)
+        navigationController?.view.bringSubviewToFront(sideMenuView)  // Ensure sideMenuView is above navigation bar
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.sideMenuView.frame.origin.x = CGFloat(menuXPosition)
+            self.view.layoutIfNeeded()  // Update the layout
+        })
+    }
+
+
+
+        // Profile Info Action
+        @objc private func showProfileInfo() {
+            print("Profile Info Tapped")
+            toggleMenu()  // Close menu after selection
+        }
+
+        // Guide Action
+        @objc private func showGuide() {
+            print("Guide Tapped")
+            toggleMenu()  // Close menu after selection
+        }
+
+        // About Action
+        @objc private func showAbout() {
+            print("About Tapped")
+            toggleMenu()  // Close menu after selection
+        }
+
+        // Log Out Action
+        @objc private func logout() {
+            print("Log Out Tapped")
+            toggleMenu()  // Close menu after selection
+        }
+
 
     func navigateToNoteDetail(noteId: String, noteCell: NoteCell?) {
         // Use the router to create and configure the NoteViewController
@@ -259,6 +324,34 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter?.didSelectNoteAt(index: indexPath.row, isSearching: isSearching, noteCell: nil)
+    }
+}
+
+extension MainViewController: UIGestureRecognizerDelegate {
+
+    func setupTapGestureRecognizer() {
+        guard let window = UIApplication.shared.windows.first else { return }
+        
+        // Add gesture recognizer to detect taps outside the menu
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideMenu))
+        tapGesture.cancelsTouchesInView = false  // Ensure table view can still receive taps
+        tapGesture.delegate = self  // Set delegate to handle gesture behavior
+        window.addGestureRecognizer(tapGesture)
+    }
+
+    @objc private func handleTapOutsideMenu() {
+        if isMenuOpen {
+            toggleMenu()  // Close the side menu if open
+        }
+    }
+
+    // Ensure that the tap gesture does not prevent other gestures (such as table view cell taps)
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        // If the tap is inside the side menu, ignore the gesture to allow interaction with side menu items
+        if let view = touch.view, view.isDescendant(of: sideMenuView) {
+            return false  // Ignore taps inside the side menu
+        }
+        return true  // Allow taps outside the side menu to close it
     }
 }
 

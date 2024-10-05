@@ -54,7 +54,7 @@ class SplashViewController: UIViewController {
             // for image view
             logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 220),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//          logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             logoImageView.widthAnchor.constraint(equalToConstant: 250),  // Adjust the size of the logo as needed
             logoImageView.heightAnchor.constraint(equalToConstant: 250),
             
