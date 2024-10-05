@@ -33,9 +33,10 @@ class NoteCollectionViewCell: UICollectionViewCell {
         contentView.layer.borderColor = UIColor.lightGray.cgColor
         shadow()
         
-//        titleLabel.backgroundColor = .red  // Title background color to see placement
-//        textLabel.backgroundColor = .green  // Text label background color
-//        contentView.backgroundColor = .yellow
+        // color to see placement
+//       titleLabel.backgroundColor = .red
+//       textLabel.backgroundColor = .green
+//       contentView.backgroundColor = .yellow
         
         titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         titleLabel.numberOfLines = 1
