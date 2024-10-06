@@ -20,6 +20,7 @@ extension Note {
     @NSManaged public var text: String!
     @NSManaged public var id: String!
     @NSManaged public var date: Date!
+    @NSManaged public var user: User?
 
 }
 

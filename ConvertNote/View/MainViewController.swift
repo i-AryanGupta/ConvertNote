@@ -192,18 +192,22 @@ class MainViewController: UIViewController, MainViewProtocol{
 
 
 
-        // Profile Info Action
-        @objc private func showProfileInfo() {
-            print("Profile Info Tapped")
-            toggleMenu()  // Close menu after selection
-        }
+    @objc private func showProfileInfo() {
+        print("Profile info tapped")
+        toggleMenu()  // Close the side menu
+
+        // Initialize the ProfileViewController
+        let profileVC = ProfileViewController()
+
+        navigationController?.pushViewController(profileVC, animated: true)
+    }
 
         // Guide Action
         @objc private func showGuide() {
             
             let guideVC = GuideViewController()
             navigationController?.pushViewController(guideVC, animated: true)
-            print("About Tapped")
+            print("guide tapped")
             toggleMenu()
             
         }
@@ -212,15 +216,38 @@ class MainViewController: UIViewController, MainViewProtocol{
         @objc private func showAbout() {
             let aboutVC = AboutViewController()
             navigationController?.pushViewController(aboutVC, animated: true)
-            print("About Tapped")
+            print("about tapped")
             toggleMenu()
         }
 
         // Log Out Action
-        @objc private func logout() {
-            print("Log Out Tapped")
-            toggleMenu()  // Close menu after selection
+    @objc private func logout() {
+        print("Log out tapped")
+        
+        // Log out the current user by clearing the session
+        CoreDataManager.shared.logoutUser()
+        
+        // Close the side menu
+        toggleMenu()
+
+        // Transition to the Login screen
+        navigateToLogin()
+    }
+    
+    // Navigate to the Login screen after logout
+    private func navigateToLogin() {
+        // Create the login screen using the LoginRouter
+        let loginViewController = LoginRouter.createLoginModule()
+        
+        // Set the login screen as the root view controller
+        let navigationController = UINavigationController(rootViewController: loginViewController)
+        
+        // Animate the transition to the login screen
+        if let window = UIApplication.shared.windows.first {
+            window.rootViewController = navigationController
+            UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: nil, completion: nil)
         }
+    }
 
 
     func navigateToNoteDetail(noteId: String, noteCell: NoteCell?) {

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B04A1A82CB3007F001339C9 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B04A1A72CB3007F001339C9 /* SignupViewController.swift */; };
+		2B04A1AA2CB3009B001339C9 /* SignupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B04A1A92CB3009B001339C9 /* SignupPresenter.swift */; };
+		2B04A1AC2CB300B4001339C9 /* SignupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B04A1AB2CB300B4001339C9 /* SignupInteractor.swift */; };
+		2B04A1AE2CB300DB001339C9 /* SignupRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B04A1AD2CB300DB001339C9 /* SignupRouter.swift */; };
+		2B04A1B02CB31062001339C9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B04A1AF2CB31062001339C9 /* ProfileViewController.swift */; };
 		2B446E7A2CAD19BD009B6292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B446E792CAD19BD009B6292 /* AppDelegate.swift */; };
 		2B446E7C2CAD19BD009B6292 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B446E7B2CAD19BD009B6292 /* SceneDelegate.swift */; };
 		2B446E842CAD19BD009B6292 /* ConvertNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2B446E822CAD19BD009B6292 /* ConvertNote.xcdatamodeld */; };
@@ -29,6 +34,12 @@
 		2B446EB72CAE7127009B6292 /* UILableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B446EB62CAE7127009B6292 /* UILableExtension.swift */; };
 		2B446EB92CAE7139009B6292 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B446EB82CAE7139009B6292 /* DateExtension.swift */; };
 		2B446EBD2CAE721F009B6292 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B446EBC2CAE721E009B6292 /* NoteCell.swift */; };
+		2B4AF77C2CB2DD0600CF9A81 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4AF77A2CB2DD0600CF9A81 /* User+CoreDataClass.swift */; };
+		2B4AF77D2CB2DD0600CF9A81 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4AF77B2CB2DD0600CF9A81 /* User+CoreDataProperties.swift */; };
+		2B4AF77F2CB2E44A00CF9A81 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4AF77E2CB2E44A00CF9A81 /* LoginViewController.swift */; };
+		2B4AF7812CB2ED8E00CF9A81 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4AF7802CB2ED8E00CF9A81 /* LoginPresenter.swift */; };
+		2B4AF7832CB2EDAD00CF9A81 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4AF7822CB2EDAD00CF9A81 /* LoginInteractor.swift */; };
+		2B4AF7852CB2EDD500CF9A81 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4AF7842CB2EDD500CF9A81 /* LoginRouter.swift */; };
 		2B55F5AE2CAFBD7F00E4392C /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55F5AD2CAFBD7F00E4392C /* NoteCollectionViewCell.swift */; };
 		2B55F5B02CAFF92400E4392C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55F5AF2CAFF92400E4392C /* SplashViewController.swift */; };
 		2BB1DA862CB16B2200D9897D /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB1DA852CB16B2200D9897D /* SideMenuView.swift */; };
@@ -37,6 +48,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B04A1A72CB3007F001339C9 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		2B04A1A92CB3009B001339C9 /* SignupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPresenter.swift; sourceTree = "<group>"; };
+		2B04A1AB2CB300B4001339C9 /* SignupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInteractor.swift; sourceTree = "<group>"; };
+		2B04A1AD2CB300DB001339C9 /* SignupRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRouter.swift; sourceTree = "<group>"; };
+		2B04A1AF2CB31062001339C9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2B446E762CAD19BD009B6292 /* ConvertNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConvertNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B446E792CAD19BD009B6292 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B446E7B2CAD19BD009B6292 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +77,12 @@
 		2B446EB62CAE7127009B6292 /* UILableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILableExtension.swift; sourceTree = "<group>"; };
 		2B446EB82CAE7139009B6292 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		2B446EBC2CAE721E009B6292 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		2B4AF77A2CB2DD0600CF9A81 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2B4AF77B2CB2DD0600CF9A81 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2B4AF77E2CB2E44A00CF9A81 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2B4AF7802CB2ED8E00CF9A81 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		2B4AF7822CB2EDAD00CF9A81 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		2B4AF7842CB2EDD500CF9A81 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		2B55F5AD2CAFBD7F00E4392C /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		2B55F5AF2CAFF92400E4392C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		2BB1DA852CB16B2200D9897D /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
@@ -119,6 +141,8 @@
 			children = (
 				2B446EAB2CAE63A9009B6292 /* MainRouter.swift */,
 				2B446EA52CAE5DC8009B6292 /* NoteRouter.swift */,
+				2B4AF7842CB2EDD500CF9A81 /* LoginRouter.swift */,
+				2B04A1AD2CB300DB001339C9 /* SignupRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -128,6 +152,8 @@
 			children = (
 				2B446E822CAD19BD009B6292 /* ConvertNote.xcdatamodeld */,
 				2B446E9F2CAE5C5B009B6292 /* CoreDataManager.swift */,
+				2B4AF77A2CB2DD0600CF9A81 /* User+CoreDataClass.swift */,
+				2B4AF77B2CB2DD0600CF9A81 /* User+CoreDataProperties.swift */,
 				2B446E9B2CAD22AD009B6292 /* Note+CoreDataClass.swift */,
 				2B446E9C2CAD22AD009B6292 /* Note+CoreDataProperties.swift */,
 			);
@@ -139,6 +165,8 @@
 			children = (
 				2B446EA92CAE6321009B6292 /* MainPresenter.swift */,
 				2B446EA12CAE5D0F009B6292 /* NotePresenter.swift */,
+				2B4AF7802CB2ED8E00CF9A81 /* LoginPresenter.swift */,
+				2B04A1A92CB3009B001339C9 /* SignupPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -148,6 +176,8 @@
 			children = (
 				2B446EA72CAE62D3009B6292 /* MainInteractor.swift */,
 				2B446EA32CAE5D86009B6292 /* NoteInteractor.swift */,
+				2B4AF7822CB2EDAD00CF9A81 /* LoginInteractor.swift */,
+				2B04A1AB2CB300B4001339C9 /* SignupInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -161,6 +191,9 @@
 				2B55F5AD2CAFBD7F00E4392C /* NoteCollectionViewCell.swift */,
 				2B55F5AF2CAFF92400E4392C /* SplashViewController.swift */,
 				2BB1DA852CB16B2200D9897D /* SideMenuView.swift */,
+				2B4AF77E2CB2E44A00CF9A81 /* LoginViewController.swift */,
+				2B04A1A72CB3007F001339C9 /* SignupViewController.swift */,
+				2B04A1AF2CB31062001339C9 /* ProfileViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -272,18 +305,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B04A1AE2CB300DB001339C9 /* SignupRouter.swift in Sources */,
 				2BB1DA862CB16B2200D9897D /* SideMenuView.swift in Sources */,
 				2B446EB72CAE7127009B6292 /* UILableExtension.swift in Sources */,
 				2B446E7A2CAD19BD009B6292 /* AppDelegate.swift in Sources */,
 				2B446EAC2CAE63A9009B6292 /* MainRouter.swift in Sources */,
 				2B446E9E2CAD22AD009B6292 /* Note+CoreDataProperties.swift in Sources */,
+				2B04A1B02CB31062001339C9 /* ProfileViewController.swift in Sources */,
+				2B4AF77F2CB2E44A00CF9A81 /* LoginViewController.swift in Sources */,
+				2B4AF7852CB2EDD500CF9A81 /* LoginRouter.swift in Sources */,
+				2B4AF77C2CB2DD0600CF9A81 /* User+CoreDataClass.swift in Sources */,
 				2B446EB12CAE70C4009B6292 /* AddButton.swift in Sources */,
 				2B446EB92CAE7139009B6292 /* DateExtension.swift in Sources */,
 				2B55F5AE2CAFBD7F00E4392C /* NoteCollectionViewCell.swift in Sources */,
 				2B446EB32CAE70E3009B6292 /* CustomTextField.swift in Sources */,
+				2B4AF77D2CB2DD0600CF9A81 /* User+CoreDataProperties.swift in Sources */,
 				2B446E7C2CAD19BD009B6292 /* SceneDelegate.swift in Sources */,
 				2B446E842CAD19BD009B6292 /* ConvertNote.xcdatamodeld in Sources */,
 				2B446EA42CAE5D86009B6292 /* NoteInteractor.swift in Sources */,
+				2B04A1AA2CB3009B001339C9 /* SignupPresenter.swift in Sources */,
 				2B446E9D2CAD22AD009B6292 /* Note+CoreDataClass.swift in Sources */,
 				2B446EBD2CAE721F009B6292 /* NoteCell.swift in Sources */,
 				2B446EB52CAE70F7009B6292 /* CustomTextView.swift in Sources */,
@@ -292,10 +332,14 @@
 				2BB1DA892CB1BBA400D9897D /* GuideViewController.swift in Sources */,
 				2BB1DA8B2CB1BFEE00D9897D /* AboutViewController.swift in Sources */,
 				2B446EA02CAE5C5B009B6292 /* CoreDataManager.swift in Sources */,
+				2B04A1A82CB3007F001339C9 /* SignupViewController.swift in Sources */,
+				2B04A1AC2CB300B4001339C9 /* SignupInteractor.swift in Sources */,
 				2B446EA22CAE5D0F009B6292 /* NotePresenter.swift in Sources */,
+				2B4AF7812CB2ED8E00CF9A81 /* LoginPresenter.swift in Sources */,
 				2B446E982CAD2166009B6292 /* MainViewController.swift in Sources */,
 				2B446EA62CAE5DC8009B6292 /* NoteRouter.swift in Sources */,
 				2B446EA82CAE62D3009B6292 /* MainInteractor.swift in Sources */,
+				2B4AF7832CB2EDAD00CF9A81 /* LoginInteractor.swift in Sources */,
 				2B55F5B02CAFF92400E4392C /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

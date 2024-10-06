@@ -78,14 +78,18 @@ class SplashViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {  // 2-second delay for splash screen
             guard let window = window else { return }
             
-            // Create the main view controller using the VIPER router
-            let mainViewController = MainRouter.createMainModule()
-            
-            // Set the main view controller as the root of a navigation controller
-            window.rootViewController = UINavigationController(rootViewController: mainViewController)
-            
-            // Animate the transition
-            UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: nil, completion: nil)
-        }
+            if CoreDataManager.shared.currentUser == nil {
+                            // No user is logged in, so show the Login screen
+                            let loginViewController = LoginRouter.createLoginModule()
+                            window.rootViewController = UINavigationController(rootViewController: loginViewController)
+                        } else {
+                            // User is logged in, so show the Main screen
+                            let mainViewController = MainRouter.createMainModule()
+                            window.rootViewController = UINavigationController(rootViewController: mainViewController)
+                        }
+
+                        // Animate the transition
+                        UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: nil, completion: nil)
+                    }
     }
 }
