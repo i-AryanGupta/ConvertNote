@@ -10,7 +10,7 @@ protocol MainInteractorProtocol {
     
     var notes: [Note] { get }
     func fetchNotes()
-    func createNote() -> Note
+    func createNote() -> Note?
     func deleteNoteAt(index: Int)
     func searchNotes(text: String) -> [Note]
     func removeEmptyNotes()
@@ -25,12 +25,17 @@ class MainInteractor: MainInteractorProtocol {
         notes = CoreDataManager.shared.fetchNotes()
     }
     
-    func createNote() -> Note {
-            let newNote = CoreDataManager.shared.createNote()
-            notes.insert(newNote, at: 0)  // Add the new note at the beginning of the array
-            return newNote
+    func createNote() -> Note? {
+        guard let newNote = CoreDataManager.shared.createNote() else {
+            // Handle the case where note creation failed (e.g., no logged-in user)
+            print("Error: Unable to create a new note. Make sure a user is logged in.")
+            return nil
         }
-    
+
+        notes.insert(newNote, at: 0)  // Add the new note at the beginning of the array
+        return newNote
+    }
+
     func deleteNoteAt(index: Int) {
         // Make sure the index is valid
                 guard index >= 0 && index < notes.count else {
