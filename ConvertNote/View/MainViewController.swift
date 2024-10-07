@@ -26,7 +26,7 @@ class MainViewController: UIViewController, MainViewProtocol{
     let button = AddButton()
     
     var isGridView = false // Track the current view (grid or list)
-    var isMenuOpen = false  // Track whether the side menu is open or not
+    var isMenuOpen = false  // menu is open or not
     var sideMenuView: SideMenuView!
     
     // Computed property to determine if the user is currently searching
@@ -52,7 +52,7 @@ class MainViewController: UIViewController, MainViewProtocol{
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             // Reload notes every time the view appears
-            presenter?.refreshNotes()  // Ensure the presenter reloads the latest notes
+            presenter?.refreshNotes()
         }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -149,13 +149,11 @@ class MainViewController: UIViewController, MainViewProtocol{
     private func setupSideMenu() {
         guard let window = UIApplication.shared.windows.first else { return }
 
-        // Side Menu Initialization (off-screen)
         sideMenuView = SideMenuView(frame: CGRect(x: -250, y: 0, width: 250, height: window.frame.height))
         
-        // Add side menu to the window (instead of the main view)
         window.addSubview(sideMenuView)
         
-        // Configure button actions for side menu buttons
+        
         sideMenuView.configureButtonActions(target: self, profileSelector: #selector(showProfileInfo), guideSelector: #selector(showGuide), aboutSelector: #selector(showAbout), logoutSelector: #selector(logout))
         
         setupTapGestureRecognizer()
@@ -368,7 +366,7 @@ extension MainViewController: UIGestureRecognizerDelegate {
         // Add gesture recognizer to detect taps outside the menu
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideMenu))
         tapGesture.cancelsTouchesInView = false  // Ensure table view can still receive taps
-        tapGesture.delegate = self  // Set delegate to handle gesture behavior
+        tapGesture.delegate = self
         window.addGestureRecognizer(tapGesture)
     }
 
@@ -382,7 +380,7 @@ extension MainViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         // If the tap is inside the side menu, ignore the gesture to allow interaction with side menu items
         if let view = touch.view, view.isDescendant(of: sideMenuView) {
-            return false  // Ignore taps inside the side menu
+            return false
         }
         return true  // Allow taps outside the side menu to close it
     }

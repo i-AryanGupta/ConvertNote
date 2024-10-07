@@ -6,17 +6,27 @@
 //
 
 import UIKit
+import Lottie
 
 class SplashViewController: UIViewController {
+    
+    let animationView: LottieAnimationView = {
+        let animation = LottieAnimationView(name: "splash_animation")
+        animation.loopMode = .loop
+        animation.contentMode = .scaleAspectFit
+        animation.play()
+        animation.translatesAutoresizingMaskIntoConstraints = false
+        return animation
+    }()
 
     
-    let logoImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "icons_erased")
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
+//    let logoImageView: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.image = UIImage(named: "icons_erased")
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        return imageView
+//    }()
     
     let appNameLabel: UILabel = {
         let label = UILabel()
@@ -46,20 +56,21 @@ class SplashViewController: UIViewController {
 
     // Set up the logo image view constraints to center it
     private func setupLogo() {
-        view.addSubview(logoImageView)
+//        view.addSubview(logoImageView)
         view.addSubview(appNameLabel)
         view.addSubview(developerNameLabel)
+        view.addSubview(animationView)
         
         NSLayoutConstraint.activate([
             // for image view
-            logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 220),
-            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            animationView.topAnchor.constraint(equalTo: view.topAnchor, constant: 220),
+            animationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 //          logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            logoImageView.widthAnchor.constraint(equalToConstant: 250),  // Adjust the size of the logo as needed
-            logoImageView.heightAnchor.constraint(equalToConstant: 250),
+            animationView.widthAnchor.constraint(equalToConstant: 250),  // Adjust the size of the logo as needed
+            animationView.heightAnchor.constraint(equalToConstant: 250),
             
             //for appname
-            appNameLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 16),
+            appNameLabel.topAnchor.constraint(equalTo: animationView.bottomAnchor, constant: 16),
             appNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             appNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             appNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),

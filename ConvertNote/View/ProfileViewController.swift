@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import Lottie
 
 class ProfileViewController: UIViewController {
 
     // UI Elements
-    private let profileImageView = UIImageView()
+    private let animationView = LottieAnimationView(name: "account") // Lottie Animation View
     private let usernameLabel = UILabel()
     private let emailLabel = UILabel()
 
@@ -23,18 +24,20 @@ class ProfileViewController: UIViewController {
 
     // Set up the UI layout
     private func setupUI() {
-        // Configure Profile Image
-        profileImageView.image = UIImage(systemName: "person.circle.fill")
-        profileImageView.tintColor = .gray
-        profileImageView.contentMode = .scaleAspectFit
-        view.addSubview(profileImageView)
+        // Configure Lottie Animation View
+        animationView.loopMode = .loop
+        animationView.animationSpeed = 0.5
+        animationView.contentMode = .scaleAspectFit
+        animationView.backgroundColor = .systemBlue
+        animationView.play() // Start the animation
+        view.addSubview(animationView)
 
-        profileImageView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            profileImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
-            profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            profileImageView.heightAnchor.constraint(equalToConstant: 100),
-            profileImageView.widthAnchor.constraint(equalToConstant: 100)
+            animationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            animationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            animationView.heightAnchor.constraint(equalToConstant: 100),
+            animationView.widthAnchor.constraint(equalToConstant: 100)
         ])
 
         // Configure Username Label
@@ -44,7 +47,7 @@ class ProfileViewController: UIViewController {
 
         usernameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            usernameLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 20),
+            usernameLabel.topAnchor.constraint(equalTo: animationView.bottomAnchor, constant: 20),
             usernameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
 
@@ -74,3 +77,4 @@ class ProfileViewController: UIViewController {
         emailLabel.text = currentUser.email
     }
 }
+

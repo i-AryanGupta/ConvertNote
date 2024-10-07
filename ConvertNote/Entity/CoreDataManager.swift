@@ -75,7 +75,7 @@ class CoreDataManager {
         return false // Invalid login credentials
     }
 
-    // Log out the user
+    // Log out
     func logoutUser() {
         currentUser = nil
         print("User logged out successfully.")
@@ -100,7 +100,7 @@ class CoreDataManager {
         return note
     }
     
-    // Saving data to Core Data
+    // Saving data
     func save() {
         if viewContext.hasChanges {
             do {

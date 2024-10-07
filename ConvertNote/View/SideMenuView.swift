@@ -6,16 +6,26 @@
 //
 
 import UIKit
+import Lottie
 
 class SideMenuView: UIView {
     
     // Image View
-    private let appIconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "icons_erased")
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+//    private let appIconImageView: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.image = UIImage(named: "icons_erased")
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        return imageView
+//    }()
+    
+    private let animationView: LottieAnimationView = {
+        let animation = LottieAnimationView(name: "sidemenu_icon")
+        animation.loopMode = .loop
+        animation.contentMode = .scaleAspectFit
+        animation.play()
+        animation.translatesAutoresizingMaskIntoConstraints = false
+        return animation
     }()
     
     // Profile Info Button
@@ -73,7 +83,7 @@ class SideMenuView: UIView {
         layer.shadowRadius = 4
 
         // Add subviews
-        addSubview(appIconImageView)
+        addSubview(animationView)
         addSubview(profileButton)
         addSubview(guideButton)
         addSubview(aboutButton)
@@ -82,13 +92,13 @@ class SideMenuView: UIView {
         // Layout using Auto Layout
         NSLayoutConstraint.activate([
             // App Icon Constraints
-            appIconImageView.topAnchor.constraint(equalTo: topAnchor, constant: 40),
-            appIconImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            appIconImageView.widthAnchor.constraint(equalToConstant: 80),
-            appIconImageView.heightAnchor.constraint(equalToConstant: 80),
+            animationView.topAnchor.constraint(equalTo: topAnchor, constant: 80),
+            animationView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            animationView.widthAnchor.constraint(equalToConstant: 100),
+            animationView.heightAnchor.constraint(equalToConstant: 100),
             
             // Profile Button Constraints
-            profileButton.topAnchor.constraint(equalTo: appIconImageView.bottomAnchor, constant: 40),
+            profileButton.topAnchor.constraint(equalTo: animationView.bottomAnchor, constant: 40),
             profileButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             
             // Guide Button Constraints
